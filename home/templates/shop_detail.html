@@ -54,25 +54,25 @@
                     <div class="col-lg-6">
                         <div class="product-side-info mb-30">
                             <h4 class="product-name mb-10">{{ product.title }}</h4>
-                            <span class="product-price">{{ product.price }} UZS</span>
+                            <span class="product-price">{{ product.price }} ₺</span>
 
                             <div class="mb-30">
                                 {{ product.content|safe }}
                             </div>
                             <div class="product__details__tag tagcloud mt-25 mb-10">
-                                <span>Mavjud o'lchamlar : </span>
+                                <span>Mevcut boyutlar : </span>
                                 {% for rs in sizes %}
                                     <a rel="tag">{{ rs.title }}</a>
                                 {% endfor %}
                                 <br>
-                                <span>Mavjud Ranglar : </span>
+                                <span>Mevcut renkler : </span>
                                 {% for rs in colors %}
                                     <a rel="tag">{{ rs.title }}</a>
                                 {% endfor %}
                             </div>
                             <div class="product__details__tag tagcloud mt-25 mb-10">
                             </div>
-                            <a href="{% url 'buy-product' product.id %}" class="fill-btn">Sotib olish</a>
+                            <a href="{% url 'buy-product' product.id %}" class="fill-btn">Satın alma</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                     <a class="nav-item nav-link active show" id="nav-general-tab"
                                        data-bs-toggle="tab"
                                        href="#nav-general"
-                                       role="tab" aria-selected="true">Tavsif</a>
+                                       role="tab" aria-selected="true">Açıklama</a>
                                 </div>
                             </nav>
 

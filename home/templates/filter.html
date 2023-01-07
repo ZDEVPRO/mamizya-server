@@ -12,32 +12,24 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="shop-main-wrapper mb-60">
-                            {% if products %}
-                                <div class="shop-main-wrapper-head mb-30">
+                            <div class="shop-main-wrapper-head mb-30">
                                 <form action="/shop/" method="post"> {% csrf_token %}
                                     <div class="sort-type-filter">
                                         <div class="sorting-type">
-                                            <span>Filterlash : </span>
+                                            <span>Filtreleme : </span>
                                             <select onchange="this.form.submit()" class="sorting-list"
                                                     name="category" id="sorting-list">
-                                                <option value="all">Barchasi</option>
-                                                <option {% if category == 'man' %}selected{% endif %} value="man">
-                                                    Erkaklar uchun
-                                                </option>
-                                                <option {% if category == 'woman' %}selected{% endif %} value="woman">
-                                                    Ayollar uchun
-                                                </option>
-                                                <option {% if category == 'kids' %}selected{% endif %} value="kids">
-                                                    Bolalar uchun
-                                                </option>
-                                                <option {% if category == 'shoes' %}selected{% endif %} value="shoes">
-                                                    Oyoq kiyimlar
-                                                </option>
+                                                <option value="all">Her şey</option>
+                                                <option value="man">Erkekler için</option>
+                                                <option value="woman">Kadınlar için</option>
+                                                <option value="kids">Çocuklar için</option>
+                                                <option value="shoes">Ayakkabı</option>
                                             </select>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                            {% if products %}
                                 <div class="products-wrapper products-full-4-column">
                                     {% for rs in page_obj.object_list %}
                                         <div class="single-product">
@@ -77,9 +69,8 @@
                                 {% endif %}
                             {% else %}
                                 <div style="text-align: center; margin-bottom: 40%;">
-                                    <h1>Maxsulot topilmadi!</h1>
-                                    <a style="margin-top: 10px;" href="/shop/" class="fill-btn">Shop sahifasiga
-                                        qaytish</a>
+                                    <h1>Ürün bulunamadı!</h1>
+                                    <a style="margin-top: 10px;" href="/shop/" class="fill-btn">Mağaza sayfasına geri dön</a>
                                 </div>
                             {% endif %}
                         </div>

@@ -12,7 +12,7 @@
                     <div class="col-lg-8 col-md-12">
                         <div class="contact-main-wrapper mb-60">
                             <div class="section-title">
-                                <h2 class="section-main-title mb-40">Biz Bilan Aloqa</h2>
+                                <h2 class="section-main-title mb-40">Bizimle iletişime geçin</h2>
                             </div>
                             <div class="contact-main-form">
                                 {% block messages %}{% include 'components/messages.html' %}{% endblock %}
@@ -20,27 +20,27 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="single-form-input">
-                                                <input name="first_name" type="text" placeholder="Ism">
+                                                <input name="first_name" type="text" placeholder="Adınız">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-form-input">
-                                                <input name="last_name" type="text" placeholder="Familiya">
+                                                <input name="last_name" type="text" placeholder="Soyadınız">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="single-form-input">
-                                                <input name="phone" type="text" placeholder="Telefon raqam">
+                                                <input name="phone" type="text" placeholder="Telefon numaranız">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="single-form-input">
-                                                <textarea name="message" id="message" placeholder="Xabar"></textarea>
+                                                <textarea name="message" id="message" placeholder="Mesajınız"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="contact-btn">
-                                        <button type="submit" class="fill-btn">Xabarni yuborish</button>
+                                        <button type="submit" class="fill-btn">Mesaj gönder</button>
                                     </div>
                                 </form>
                             </div>
@@ -49,7 +49,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="sidebar-widget-wrapper mb-60">
                             <div class="sidebar-widget">
-                                <h4 class="sidebar-widget-title">Aloqa Malumotlari</h4>
+                                <h4 class="sidebar-widget-title">İletişim bilgileri</h4>
                                 <div class="sidebar-widget-content">
                                     <div class="contact-list">
                                         <div class="contact-list-item">
@@ -64,7 +64,7 @@
                                                     </svg>
                                                 </div>
                                                 <div class="irc-item-content">
-                                                    <div class="irc-item-heading">Telefon raqam</div>
+                                                    <div class="irc-item-heading">Telefon numaralarımız</div>
                                                     <a href="tel:{{ contact.phone1 }}"><span style="color: black;">{{ contact.phone1 }}</span></a><br>
                                                     <a href="tel:+{{ contact.phone2 }}"><span style="color: black;">{{ contact.phone2 }}</span></a>
                                                 </div>
@@ -85,7 +85,7 @@
                                                     </svg>
                                                 </div>
                                                 <div class="irc-item-content">
-                                                    <div class="irc-item-heading">Elektron pochta</div>
+                                                    <div class="irc-item-heading">Email</div>
                                                     <a href="/"><span
                                                             style="color: black;">{{ contact.email }}</span></a>
                                                 </div>
@@ -118,7 +118,7 @@
 
                                                 </div>
                                                 <div class="irc-item-content">
-                                                    <div class="irc-item-heading">Manzil</div>
+                                                    <div class="irc-item-heading">Adres</div>
                                                     <span style="color: black;">{{ contact.address }}</span>
                                                 </div>
                                             </div>

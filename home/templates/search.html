@@ -14,22 +14,22 @@
                         <div class="shop-main-wrapper mb-60">
                             {% if result %}
                                 <div class="shop-main-wrapper-head mb-30">
-                                    <form action="/shop/" method="post"> {% csrf_token %}
-                                        <div class="sort-type-filter">
-                                            <div class="sorting-type">
-                                                <span>Filterlash : </span>
-                                                <select onchange="this.form.submit()" class="sorting-list"
-                                                        name="category" id="sorting-list">
-                                                    <option value="all">Barchasi</option>
-                                                    <option value="man">Erkaklar uchun</option>
-                                                    <option value="woman">Ayollar uchun</option>
-                                                    <option value="kids">Bolalar uchun</option>
-                                                    <option value="shoes">Oyoq kiyimlar</option>
-                                                </select>
-                                            </div>
+                                <form action="/shop/" method="post"> {% csrf_token %}
+                                    <div class="sort-type-filter">
+                                        <div class="sorting-type">
+                                            <span>Filtreleme : </span>
+                                            <select onchange="this.form.submit()" class="sorting-list"
+                                                    name="category" id="sorting-list">
+                                                <option value="all">Her şey</option>
+                                                <option value="man">Erkekler için</option>
+                                                <option value="woman">Kadınlar için</option>
+                                                <option value="kids">Çocuklar için</option>
+                                                <option value="shoes">Ayakkabı</option>
+                                            </select>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
                                 <div class="products-wrapper products-full-4-column">
                                     {% for rs in result %}
                                         <div class="single-product">
@@ -41,7 +41,7 @@
                                                 <div class="product-name"><a
                                                         href="{% url 'shop-detail' rs.id %}">{{ rs.title }}</a></div>
                                                 <div class="product-price">
-                                                    <span class="price-now">{{ rs.price }} UZS</span>
+                                                    <span class="price-now">{{ rs.price }} ₺</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,9 +49,8 @@
                                 </div>
                             {% else %}
                                 <div style="text-align: center; margin-bottom: 40%;">
-                                    <h1>Maxsulot topilmadi!</h1>
-                                    <a style="margin-top: 10px;" href="/shop/" class="fill-btn">Shop sahifasiga
-                                        qaytish</a>
+                                    <h1>Ürün bulunamadı!</h1>
+                                    <a style="margin-top: 10px;" href="/shop/" class="fill-btn">Mağaza sayfasına geri dön</a>
                                 </div>
                             {% endif %}
                         </div>
