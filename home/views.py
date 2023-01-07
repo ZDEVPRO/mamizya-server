@@ -5,7 +5,6 @@ from home.models import *
 from site_settings.models import *
 from django.core.paginator import Paginator
 
-
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
@@ -51,6 +50,7 @@ def about(request):
 
 def contact(request):
     contact_data = ContactData.objects.last()
+    bot_data = TelegramBot.objects.last()
 
     if request.method == 'POST':
         data = Contact()
@@ -71,8 +71,8 @@ def contact(request):
                f'\n 📩  XABAR: {data.message}'
         text1 = "".join(text)
 
-        bot_token = '5260192605:AAEGRPGEAyN-g6ygFy-pvZNFsgZk9eQu6Gc'
-        bot_chatID = '1255807110'
+        bot_token = bot_data.bot_token
+        bot_chatID = bot_data.chat_id
 
         url = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={text1}'
 
@@ -107,6 +107,7 @@ def shop_detail(request, id):
 
 def buy_product(request, id):
     product = Product.objects.get(id=id)
+    bot_data = TelegramBot.objects.last()
     sizes = product.size.all()
     colors = product.color.all()
 
@@ -133,8 +134,8 @@ def buy_product(request, id):
                f'\n 📆  SANA: {data.create_at.strftime("%d-%m-%Y")}'
         text1 = "".join(text)
 
-        bot_token = '5260192605:AAEGRPGEAyN-g6ygFy-pvZNFsgZk9eQu6Gc'
-        bot_chatID = '1255807110'
+        bot_token = bot_data.bot_token
+        bot_chatID = bot_data.chat_id
 
         url = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={text1}'
 

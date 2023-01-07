@@ -38,3 +38,15 @@ class ContactData(models.Model):
     class Meta:
         verbose_name = 'Aloqa Malumotlari'
         verbose_name_plural = 'Aloqa Malumotlari'
+
+
+class TelegramBot(models.Model):
+    chat_id = models.CharField(max_length=1000)
+    bot_token = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.chat_id
+
+    class Meta:
+        verbose_name = 'Telegram Bot'
+        verbose_name_plural = 'Telegram Bot'

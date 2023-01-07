@@ -13,3 +13,4 @@ class ContactDataAdmin(admin.ModelAdmin):
 
 admin.site.register(About, AboutAdmin)
 admin.site.register(ContactData, ContactDataAdmin)
+admin.site.register(TelegramBot)
