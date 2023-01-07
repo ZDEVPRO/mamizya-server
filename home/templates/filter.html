@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop - Mamizya{% endblock %}
+
+{% block content %}
+    <main>
+        {% block sidebar %}{% include 'components/sidebar.html' %}{% endblock %}
+
+        <!-- shop main area start  -->
+        <div class="shop-main-area pt-120 pb-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="shop-main-wrapper mb-60">
+                            {% if products %}
+                                <div class="shop-main-wrapper-head mb-30">
+                                <form action="/shop/" method="post"> {% csrf_token %}
+                                    <div class="sort-type-filter">
+                                        <div class="sorting-type">
+                                            <span>Filterlash : </span>
+                                            <select onchange="this.form.submit()" class="sorting-list"
+                                                    name="category" id="sorting-list">
+                                                <option value="all">Barchasi</option>
+                                                <option {% if category == 'man' %}selected{% endif %} value="man">
+                                                    Erkaklar uchun
+                                                </option>
+                                                <option {% if category == 'woman' %}selected{% endif %} value="woman">
+                                                    Ayollar uchun
+                                                </option>
+                                                <option {% if category == 'kids' %}selected{% endif %} value="kids">
+                                                    Bolalar uchun
+                                                </option>
+                                                <option {% if category == 'shoes' %}selected{% endif %} value="shoes">
+                                                    Oyoq kiyimlar
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                                <div class="products-wrapper products-full-4-column">
+                                    {% for rs in page_obj.object_list %}
+                                        <div class="single-product">
+                                            <div class="product-image pos-rel">
+                                                <a href="{% url 'shop-detail' rs.id %}" class=""><img
+                                                        src="{{ rs.image.url }}" alt="img"></a>
+                                            </div>
+                                            <div class="product-desc">
+                                                <div class="product-name"><a
+                                                        href="{% url 'shop-detail' rs.id %}">{{ rs.title }}</a></div>
+                                                <div class="product-price">
+                                                    <span class="price-now">{{ rs.price }} UZS</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {% if count > 12 %}
+                                    <div class="common-pagination mt-30 mb-20">
+                                        <ul>
+                                            {% if page_obj.has_previous %}
+                                                <li><a href="?page={{ page_obj.previous_page_number }}"><i
+                                                        class="fal fa-angle-left"></i></a></li>
+                                            {% endif %}
+                                            <li class="active"><a
+                                                    href="?page{{ page_obj.number }}"><span>{{ page_obj.number }}</span></a>
+                                            </li>
+                                            {% if page_obj.has_next %}
+                                                <li>
+                                                    <a href="?page={{ page_obj.next_page_number }}"><span>{{ page_obj.next_page_number }}</span></a>
+                                                </li>
+                                                <li><a href="?page={{ page_obj.next_page_number }}"><i
+                                                        class="fal fa-angle-right"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div style="text-align: center; margin-bottom: 40%;">
+                                    <h1>Maxsulot topilmadi!</h1>
+                                    <a style="margin-top: 10px;" href="/shop/" class="fill-btn">Shop sahifasiga
+                                        qaytish</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- shop main area end  -->
+
+
+    </main>
+
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

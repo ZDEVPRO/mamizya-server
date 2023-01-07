@@ -1,0 +1,39 @@
+from django.db import models
+from django.utils.safestring import mark_safe
+
+
+class About(models.Model):
+    big_title = models.TextField()
+    title = models.CharField(max_length=600)
+    image = models.ImageField(upload_to='images/')
+    description = models.TextField()
+    button_title = models.CharField(max_length=600)
+    button_link = models.CharField(max_length=3000)
+
+    def __str__(self):
+        return self.title
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="70">'.format(self.image.url))
+
+    class Meta:
+        verbose_name = 'Biz haqimizda'
+        verbose_name_plural = 'Biz haqimizda'
+
+
+class ContactData(models.Model):
+    phone1 = models.CharField(max_length=600)
+    phone2 = models.CharField(max_length=600)
+    email = models.CharField(max_length=600)
+    address = models.TextField()
+
+    telegram = models.CharField(max_length=1000)
+    instagram = models.CharField(max_length=1000)
+    whatsapp = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.phone1
+
+    class Meta:
+        verbose_name = 'Aloqa Malumotlari'
+        verbose_name_plural = 'Aloqa Malumotlari'

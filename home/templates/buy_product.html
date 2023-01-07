@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sotib olish - Mamizya{% endblock %}
+
+{% block content %}
+    <style>
+        /* Google fonts import link */
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        .mywrapper {
+            height: 60px;
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFF;
+            border-radius: 12px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .mywrapper span {
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 400;
+            cursor: pointer;
+            user-select: none;
+            color: black;
+        }
+
+        .mywrapper span.num123 {
+            font-size: 30px;
+            border-right: 2px solid rgba(0, 0, 0, 0.2);
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+    </style>
+
+    <main>
+        {% block sidebar %}{% include 'components/sidebar.html' %}{% endblock %}
+        <!-- contact main area start  -->
+        <section class="contact-main-area pt-40 pb-60">
+            <div class="container container-small">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="contact-main-wrapper mb-60">
+                            <div class="section-title">
+                                <h2 class="section-main-title mb-40"><i class="fa fa-shopping-cart"></i> Sotib olish
+                                </h2>
+                                <p>Sotib olish uchun malumotlaringizni kiriting</p>
+                            </div>
+                            <div class="contact-main-form">
+                                {% block messages %}{% include 'components/messages.html' %}{% endblock %}
+                                <form method="post"> {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="single-form-input">
+                                                <input name="product_title" type="text" value="{{ product.title }}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="single-form-input">
+                                                <label style="margin-bottom: 10px;">Maxsulot miqdorini kiring:</label>
+                                                <br>
+                                                <div class="product-quantity-cart mb-25">
+                                                    <div class="product-quantity-form">
+                                                        <button class="cart-minus"><i class="far fa-minus"></i>
+                                                        </button>
+                                                        <input class="cart-input" type="text" name="amount" value="1">
+                                                        <button class="cart-plus"><i class="far fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="country-select">
+                                                <select name="product_size">
+                                                    <option>O'lchamni tanlang</option>
+                                                    {% for rs in sizes %}
+                                                        <option value="{{ rs.title }}">{{ rs.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="country-select">
+                                                <select name="product_color">
+                                                    <option>Maxsulot rangini tanlang</option>
+                                                    {% for rs in colors %}
+                                                        <option value="{{ rs.title }}">{{ rs.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="single-form-input">
+                                                <input name="phone" type="number" placeholder="Telefon raqam" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="single-form-input">
+                                                <input name="address" type="text" placeholder="Sizning Manzilingiz"
+                                                       required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-btn">
+                                        <button type="submit" class="fill-btn">Yuborish</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="sidebar-widget-wrapper mb-60">
+                            <div class="sidebar-widget">
+                                <h4 class="sidebar-widget-title">Maxsulot</h4>
+                                <div class="sidebar-widget-content">
+                                    <div class="contact-list">
+                                        <div class="contact-list-item">
+                                            <div class="irc-item">
+                                                <div class="irc-item-content">
+                                                    <img width="300" src="{{ product.image.url }}"
+                                                         alt="img">
+                                                    <br>
+                                                    <br>
+                                                    <a href="{% url 'shop-detail' product.id %}"><h3
+                                                            style="text-align: center;">{{ product.title }}</h3></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- contact main area end  -->
+
+        <div class="pt-60 pb-60"></div>
+    </main>
+    <br>
+    <br>
+    <br>
+    <script>
+        const plus = document.querySelector(".plus123"),
+            minus = document.querySelector(".minus123"),
+            num = document.querySelector(".num123");
+        let a = 1;
+        plus.addEventListener("click", () => {
+            a++;
+            a = (a < 10) ? "0" + a : a;
+            num.innerText = a;
+        });
+
+        minus.addEventListener("click", () => {
+            if (a > 1) {
+                a--;
+                a = (a < 10) ? "0" + a : a;
+                num.innerText = a;
+            }
+        });
+
+    </script>
+{% endblock %}
