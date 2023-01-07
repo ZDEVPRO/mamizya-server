@@ -26,6 +26,7 @@ class ContactData(models.Model):
     phone2 = models.CharField(max_length=600)
     email = models.CharField(max_length=600)
     address = models.TextField()
+    working_time = models.CharField(max_length=10000)
 
     telegram = models.CharField(max_length=1000)
     instagram = models.CharField(max_length=1000)

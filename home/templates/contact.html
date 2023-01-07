@@ -35,7 +35,8 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="single-form-input">
-                                                <textarea name="message" id="message" placeholder="Mesajınız"></textarea>
+                                                <textarea name="message" id="message"
+                                                          placeholder="Mesajınız"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -65,8 +66,10 @@
                                                 </div>
                                                 <div class="irc-item-content">
                                                     <div class="irc-item-heading">Telefon numaralarımız</div>
-                                                    <a href="tel:{{ contact.phone1 }}"><span style="color: black;">{{ contact.phone1 }}</span></a><br>
-                                                    <a href="tel:+{{ contact.phone2 }}"><span style="color: black;">{{ contact.phone2 }}</span></a>
+                                                    <a href="tel:{{ contact.phone1 }}"><span
+                                                            style="color: black;">{{ contact.phone1 }}</span></a><br>
+                                                    <a href="tel:+{{ contact.phone2 }}"><span
+                                                            style="color: black;">{{ contact.phone2 }}</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,12 +117,19 @@
                                                             </g>
                                                         </g>
                                                     </svg>
-
-
                                                 </div>
                                                 <div class="irc-item-content">
                                                     <div class="irc-item-heading">Adres</div>
                                                     <span style="color: black;">{{ contact.address }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contact-list-item">
+                                            <div class="irc-item">
+                                                <i class="fa fa-clock"></i>
+                                                <div class="irc-item-content">
+                                                    <div class="irc-item-heading">Çalışma saatleri</div>
+                                                    <span style="color: black;">{{ contact.working_time }}</span>
                                                 </div>
                                             </div>
                                         </div>
